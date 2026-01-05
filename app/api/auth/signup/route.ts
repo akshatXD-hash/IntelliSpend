@@ -33,7 +33,8 @@ export async function POST(req:NextRequest){
   });
 
   return NextResponse.json({
-    message:"User Created Successfully"
+    message:"User Created Successfully",
+    success:true
   },{status:201})
    }catch(error){
      console.error("Internal errore occured",error);
