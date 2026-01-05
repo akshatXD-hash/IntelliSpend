@@ -1,6 +1,8 @@
+import { prisma } from "@/app/lib/db";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
+import { NextResponse } from "next/server";
 
 
 
@@ -13,8 +15,21 @@ const handler = NextAuth({
                 password:{label:"Password",type:"password",placeholder:'Enter Your Password'},
             },
             async authorize(credentials:any){
-                return{
-                  id:"1"
+              if (!credentials?.email || !credentials?.password) {
+    return null;
+  }
+                const user = await prisma.user.findUnique({
+                  where:{
+                    email:credentials.email
+                  }
+                })
+                if(!user){
+                  return null;
+                }
+                return {
+                  id:user.id,
+                  email:user.email,
+                  name:user.username
                 }
             }
         }),
