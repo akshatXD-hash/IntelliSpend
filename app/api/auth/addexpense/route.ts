@@ -55,3 +55,37 @@ export async function POST(req:NextRequest){
     
     }
 }
+
+export async function GET(req:NextRequest){
+    try{
+        const session = await getServerSession(authOptions);
+        if(!session||!session.user){
+            return NextResponse.json({
+                success:false,
+                message:"Unaothorized",
+            },{status:401})
+        }
+
+        
+        const record = await prisma.record.findMany({
+            where:{
+                userId:(session.user as any).id
+            },
+            orderBy:{
+                date:'desc'
+            },
+            take:10,
+        })
+
+        return NextResponse.json({
+            success:true,
+            record
+        })
+    }catch(err){
+       console.error("error fetching records",err);
+       return NextResponse.json({
+        success:false,
+        message:"There was an error"
+       },{status:500});
+    }
+}
