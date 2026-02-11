@@ -39,15 +39,19 @@ export async function GET(req: NextRequest) {
     let totalMoney = 0;
     const categoryTotals: any = {};
     
-    for (let expense of expenses) {
-      totalMoney = totalMoney + expense.amount;
-      
-      // Count by category
-      if (!categoryTotals[expense.category]) {
-        categoryTotals[expense.category] = 0;
-      }
-      categoryTotals[expense.category] += expense.amount;
-    }
+  for (let expense of expenses) {
+  totalMoney += expense.amount;
+
+  // Normalize category (Bills, bills, BILLS → bills)
+  const category = expense.category.toLowerCase();
+
+  if (!categoryTotals[category]) {
+    categoryTotals[category] = 0;
+  }
+
+  categoryTotals[category] += expense.amount;
+}
+
 
     // STEP 5: Try to get AI insights from FREE models
     const insights = await getAIInsights(expenses, totalMoney, categoryTotals);
@@ -82,7 +86,7 @@ async function getAIInsights(expenses: any[], totalMoney: number, categoryTotals
 
   const aiMessage = `Hey! You're my friend and I'm helping you save money. Look at your spending:
 
-Total spent: $${totalMoney}
+Total spent: ₹${totalMoney}
 Recent expenses:
 ${expenseList}
 
