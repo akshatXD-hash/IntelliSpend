@@ -268,9 +268,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Have questions or suggestions? Reach out!
 
-- **GitHub**: [@yourusername](https://github.com/yourusername)
-- **Email**: your.email@example.com
-- **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
+- **GitHub**: [akshatXD-hash](https://github.com/akshatXD-hash)
+- **Email**: akshatpurohit23dec@gmaill.com
+
 
 ---
 
