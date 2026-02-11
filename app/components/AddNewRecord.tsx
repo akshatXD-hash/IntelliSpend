@@ -1,14 +1,40 @@
 "use client"
 import React, { useState } from 'react';
 import { Sparkles, Calendar, Tag, DollarSign, PlusCircle } from 'lucide-react';
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function AddNewRecord() {
    const [title,setTitle] = useState("");
    const [amount,setAmount] = useState("");
    const [category,setCategory] = useState("");
    const [date,setDate] = useState("");
+   const [loading,setLoading] = useState(false);
+
+   const handleSubmit = async(e:React.FormEvent)=>{
+    e.preventDefault();
+    setLoading(true);
+
+    const { data } = await axios.post('/api/auth/addexpense',{title,amount:parseFloat(amount),category,date: new Date(date).toISOString()})
+    if(data.success){
+      toast.success("Expense added successfully 🎉!!!");
+      setTitle("");
+      setAmount("");
+      setCategory("");
+      setDate("");
+    }
+    else{
+      toast.error(data.message || "Failed to add expense");
+    }
+
+    setLoading(false);
+   }
     
   return (
+    <>
+
+    <Toaster position='top-right'/>
     <div className="bg-[#111827] border border-slate-800 rounded-2xl p-6 w-full max-w-xl shadow-xl">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
@@ -20,7 +46,8 @@ export default function AddNewRecord() {
           <p className="text-slate-400 text-sm">Track your spending with AI assistance</p>
         </div>
       </div>
-
+       
+       <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Description Input */}
         <div className="space-y-2">
@@ -86,7 +113,7 @@ export default function AddNewRecord() {
             Amount
           </label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
             <input 
               value={amount}
               onChange={(e) => {
@@ -101,10 +128,13 @@ export default function AddNewRecord() {
       </div>
 
       {/* Submit Button */}
-      <button className="w-full mt-8 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-500 hover:to-blue-300 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 transition-all transform hover:scale-[1.01] active:scale-[0.99]">
+      <button 
+       className="w-full mt-8 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-500 hover:to-blue-300 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 transition-all transform hover:scale-[1.01] active:scale-[0.99]">
         <PlusCircle size={20} />
         Add Expense
       </button>
+      </form>
     </div>
+    </>
   );
 }

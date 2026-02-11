@@ -10,6 +10,7 @@ export async function POST(req:NextRequest){
     const session = await getServerSession(authOptions);
     if(!session||!session.user){
         return NextResponse.json({
+            success:false,
             message:"User must first log in to add expense"
         },{status:401})
     }
@@ -19,6 +20,7 @@ export async function POST(req:NextRequest){
 
     if(!category||!date){
         return NextResponse.json({
+            success:false,
             message:"Missing Input fields"
         },{status:400})
     }
@@ -35,6 +37,7 @@ export async function POST(req:NextRequest){
     });
 
     return NextResponse.json({
+        success:true,
         message:"Record created Successfully",
         expense
     },{status:201})
@@ -45,6 +48,7 @@ export async function POST(req:NextRequest){
     }catch(err){
          console.error("❌ Error:", err); // Log the error
       return NextResponse.json({
+        success:false,
         message:"Some error occured"
       },{status:500})
      
