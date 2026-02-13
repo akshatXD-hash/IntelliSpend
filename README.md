@@ -1,4 +1,4 @@
-# 💰 IntelliSpend - Smart Expense Tracker
+# 💰 IntelliSpend.ai - Smart Expense Tracker
 
 <div align="center">
   
