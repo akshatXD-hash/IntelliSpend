@@ -1,0 +1,26 @@
+[33mf7ff6cc[m[33m ([m[1;36mHEAD[m[33m)[m HEAD@{0}: pull origin main --rebase (pick): Expense history of the user
+[33m56766b1[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{1}: pull origin main --rebase (start): checkout 56766b14806831a428542189482f1d76aaf9cd00
+[33mf75f04e[m[33m ([m[1;32mmain[m[33m)[m HEAD@{2}: commit: Added the expense history ui connecting backend
+[33m69fc97a[m HEAD@{3}: commit: Expense history of the user
+[33mc6ae6d3[m HEAD@{4}: commit: fixed normalization
+[33mfe4344f[m HEAD@{5}: commit: fixed capitalization and currency
+[33mc1de6cf[m HEAD@{6}: commit: ai insight api added
+[33m1aa0075[m HEAD@{7}: commit: added statistics component of the expenses
+[33m4f4977e[m HEAD@{8}: commit: dyamic graph fetches the backend correctly
+[33m81be71b[m HEAD@{9}: commit: get endpoint added
+[33m11688d1[m HEAD@{10}: commit: Added expense chart
+[33m5ec0d41[m HEAD@{11}: commit: connected backend to frontend add expense
+[33mdb435a8[m HEAD@{12}: commit: added expense end point
+[33m5b8d222[m HEAD@{13}: commit: added components
+[33m96f23f1[m HEAD@{14}: commit: changes in expense schema
+[33mc2109e7[m HEAD@{15}: commit: guest page addded
+[33m365740a[m HEAD@{16}: commit: Added Navbar and footer
+[33m79ca066[m HEAD@{17}: commit: Added custom signin Page
+[33m03622fa[m HEAD@{18}: commit: Added signin logic to the nextauth backend
+[33m9d57dec[m HEAD@{19}: commit: Connected backend api to signup page
+[33m4e85c9b[m HEAD@{20}: commit: Added the signup api connected to database
+[33m7822444[m HEAD@{21}: commit: Added database Schema
+[33m3c8ebcd[m HEAD@{22}: commit: Added jwt callback
+[33m2e5e309[m HEAD@{23}: Branch: renamed refs/heads/master to refs/heads/main
+[33m2e5e309[m HEAD@{25}: commit: Added signup page
+[33m2cc547a[m HEAD@{26}: commit (initial): Initial commit from Create Next App
