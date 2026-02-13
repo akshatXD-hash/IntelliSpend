@@ -1,12 +1,12 @@
 import { prisma } from "@/app/lib/db";
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import { NextResponse } from "next/server";
 
 
 
-const handler = NextAuth({
+export const authOptions :NextAuthOptions = {
     providers:[
         CredentialsProvider({
             name:'Credentials',
@@ -28,8 +28,9 @@ const handler = NextAuth({
                 }
                 return {
                   id:user.id,
-                  email:user.email,
-                  name:user.username
+                  email:user.email, //mapping will happen here where navbar logic will be applied
+                  name:user.username,
+                  createdAt:user.createdAt
                 }
             }
         }),
@@ -41,11 +42,15 @@ const handler = NextAuth({
   
 
     ],
+    pages:{
+      signIn:"/signin"
+    },
 
     callbacks: {
     async jwt({ token, user }:any) {
       if (user) {
         token.id = user.id; // ✅ store id in token
+        token.createdAt = user.createdAt;
       }
       return token;
     },
@@ -53,6 +58,7 @@ const handler = NextAuth({
     async session({ session, token }:any) {
       if (session.user) {
         session.user.id = token.id as string; // ✅ expose id to session
+        session.user.createdAt = token.createdAt;
       }
       return session;
     },
@@ -61,7 +67,9 @@ const handler = NextAuth({
     secret:process.env.NEXTAUTH_SECRET
 
     
-})
+}
+
+const handler = NextAuth(authOptions);
 
 export const GET = handler;
 export const POST = handler;

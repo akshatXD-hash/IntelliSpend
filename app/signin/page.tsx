@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { signIn } from "next-auth/react"; // Import the signin function
+import { signIn } from "next-auth/react"; 
 import { useRouter } from "next/navigation";
 import { Mail, Lock, ArrowRight, Wallet, PieChart, Shield, Github } from 'lucide-react';
 
@@ -17,18 +17,16 @@ export default function Signin() {
     setLoading(true);
     setError("");
 
-    // This triggers the 'authorize' function in your route.ts
     const res = await signIn("credentials", {
       email,
       password,
-      redirect: false, // Prevents automatic redirect to handle errors here
+      redirect: false,
     });
 
     if (res?.error) {
       setError("Invalid credentials or user does not exist");
       setLoading(false);
     } else {
-      // Success! User found in DB and session created
       router.push("/"); 
       router.refresh(); 
     }
@@ -56,42 +54,43 @@ export default function Signin() {
       </div>
 
       {/* Right Panel: Sign In Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
         <div className="w-full max-w-md space-y-8">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">Sign In</h2>
-            <p className="text-gray-500 mt-2">Welcome back! Access your dashboard.</p>
+            <h2 className="text-4xl font-bold text-black">Sign In</h2>
+            <p className="text-gray-600 mt-2 font-medium">Welcome back! Access your dashboard.</p>
           </div>
 
-          {/* Error Message */}
-          {error && <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm">{error}</div>}
+          {error && <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm font-semibold">{error}</div>}
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Email Field */}
             <div className="space-y-2">
-              <label className="text-sm font-bold text-gray-700">Email Address</label>
+              <label className="text-sm font-bold text-gray-900">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
                 <input 
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="raj123@gmail.com"
-                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-black placeholder:text-gray-400 font-medium"
                   required 
                 />
               </div>
             </div>
 
+            {/* Password Field */}
             <div className="space-y-2">
-              <label className="text-sm font-bold text-gray-700">Password</label>
+              <label className="text-sm font-bold text-gray-900">Password</label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
                 <input 
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-black placeholder:text-gray-400 font-medium"
                   required 
                 />
               </div>
@@ -107,20 +106,20 @@ export default function Signin() {
 
           <div className="flex items-center gap-4 py-2">
             <div className="h-[1px] bg-gray-200 flex-grow" />
-            <span className="text-gray-400 text-sm font-medium">OR</span>
+            <span className="text-gray-400 text-sm font-bold uppercase tracking-wider">OR</span>
             <div className="h-[1px] bg-gray-200 flex-grow" />
           </div>
 
-          {/* GitHub Login Button */}
           <button 
+            type="button"
             onClick={() => signIn("github", { callbackUrl: "/" })}
-            className="w-full bg-black text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-all"
+            className="w-full bg-[#1a1a1a] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all shadow-md"
           >
             <Github size={20} /> Continue with GitHub
           </button>
 
-          <p className="text-center text-gray-500">
-            Don't have an account? <a href="/signup" className="text-[#1d4ed8] font-bold hover:underline">Sign up</a>
+          <p className="text-center text-gray-600 font-medium">
+            Don't have an account? <a href="/signup" className="text-[#1d4ed8] font-extrabold hover:underline">Sign up</a>
           </p>
         </div>
       </div>

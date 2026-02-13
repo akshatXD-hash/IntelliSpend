@@ -7,17 +7,17 @@ import { useRouter } from 'next/navigation';
 
 export default function Signup() {
     const router = useRouter();
-    const [name,setName] = useState<string>("");
+    const [username,setUsername] = useState<string>("");
     const [email,setEmail] = useState<string>("");
     const [password,setPassword] = useState<string>("");
 
 
     async function submit(e:React.FormEvent) {
        e.preventDefault();
-       const response = await axios.post("/api/auth/signup",{name,email,password});
+       const response = await axios.post("/api/auth/signup",{username,email,password});
        //@ts-ignore
        if(response.data.success){
-         router.push("/");
+         router.push("/api/auth/signin");
        }
     }
 
@@ -81,9 +81,9 @@ export default function Signup() {
               <div className="group relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-blue-600 transition-colors" />
                 <input
-                  value={name}
+                  value={username}
                   onChange={(e)=>{
-                    setName(e.target.value);
+                    setUsername(e.target.value);
                   }}
                   type="text"
                   required

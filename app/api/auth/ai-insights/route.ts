@@ -172,7 +172,7 @@ function generateBasicInsights(total: number, categories: any, count: number) {
 
   return `Hey there! 👋 Let me break down your spending for you:
 
-${emoji} So I noticed you've spent **$${total.toFixed(2)}** across ${count} transactions. Not bad!
+${emoji} So I noticed you've spent **₹${total.toFixed(2)}** across ${count} transactions. Not bad!
 
 Your biggest spending category is **${topCategory}** at $${topAmount.toFixed(2)} - that's where most of your money is going right now.
 
