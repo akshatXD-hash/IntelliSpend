@@ -7,7 +7,7 @@
   ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
   ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
   
-  **Track your expenses. Get AI-powered insights. Save money.**
+  **Track your expenses.Get AI-powered insights. Save money.**
   
   [Demo](#-demo) • [Features](#-features) • [Installation](#-installation) • [Usage](#-usage)
 
