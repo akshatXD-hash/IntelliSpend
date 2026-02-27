@@ -59,9 +59,7 @@ const Guest = () => {
               Sign In to Continue
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-8 py-4 rounded-xl font-bold border border-slate-700 hover:bg-slate-800/50 transition-all">
-              Explore Demo
-            </button>
+            
           </div>
         </motion.div>
 
