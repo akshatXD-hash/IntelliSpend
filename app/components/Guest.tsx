@@ -12,6 +12,7 @@ import {
   Lock,
   Key
 } from 'lucide-react';
+import Link from 'next/link';
 
 const Guest = () => {
   // Animation Variants
@@ -55,10 +56,14 @@ const Guest = () => {
             Leverage OpenRouter AI for categorization and Neon PostgreSQL for lightning-fast data persistence.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                          <Link href={"/signin"}>
             <button className="flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all group">
+
               Sign In to Continue
+              
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
+            </Link>
             
           </div>
         </motion.div>
