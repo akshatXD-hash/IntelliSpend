@@ -26,13 +26,13 @@ function Footer() {
 
           {/* Simple Navigation */}
           <nav className="flex items-center gap-10">
-            <a href="#" className="text-gray-500 font-semibold hover:text-blue-600 transition-colors">Home</a>
-            <a href="#" className="text-gray-500 font-semibold hover:text-blue-600 transition-colors">About</a>
-            <a href="#" className="text-gray-500 font-semibold hover:text-blue-600 transition-colors">Contact</a>
+            <a href="/" className="text-gray-500 font-semibold hover:text-blue-600 transition-colors">Home</a>
+            <a href="/about" className="text-gray-500 font-semibold hover:text-blue-600 transition-colors">About</a>
+            <a href="/" className="text-gray-500 font-semibold hover:text-blue-600 transition-colors">Contact</a>
           </nav>
 
           {/* Action Button */}
-         
+          
         </div>
 
         {/* Bottom Bar */}
