@@ -51,8 +51,8 @@ const Guest = () => {
             Smart Expenses. <br /> Private AI Insights.
           </h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Take control of your data with **NextAuth** protected sessions. 
-            Leverage **OpenRouter AI** for categorization and **Neon PostgreSQL** for lightning-fast data persistence.
+            Take control of your data with NextAuth protected sessions. 
+            Leverage OpenRouter AI for categorization and Neon PostgreSQL for lightning-fast data persistence.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all group">
